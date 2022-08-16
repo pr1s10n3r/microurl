@@ -26,7 +26,7 @@ func (c *Connection) Connect() error {
 
 func (c *Connection) Close() error {
 	if c.instance == nil {
-		return nil
+		return ErrConnectionNotOpen
 	}
 
 	return c.instance.Close()

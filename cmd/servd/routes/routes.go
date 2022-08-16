@@ -16,7 +16,7 @@ func (r Router) Start() error {
 
 	urlHandler := handlers.NewURLHandler(r.UrlRepo)
 	app.Get("/:code", urlHandler.GoTo)
-	app.Post("/new", urlHandler.NewURL)
+	app.Get("/new", urlHandler.NewURL)
 	app.Post("/new", urlHandler.StoreURL)
 
 	return app.Listen(":3000")

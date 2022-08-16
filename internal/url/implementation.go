@@ -16,7 +16,7 @@ func NewUrlRepositoryImpl(conn database.Connection) urlRepoImpl {
 }
 
 func (impl urlRepoImpl) Save(value string) (*url.URL, error) {
-	stmt, err := impl.db.Prepare(`INSERT INTO urls (code, value) VALUES (?, ?)`)
+	stmt, err := impl.db.Prepare(`INSERT INTO url (code, value) VALUES (?, ?)`)
 	if err != nil {
 		return nil, err
 	}
@@ -31,7 +31,7 @@ func (impl urlRepoImpl) Save(value string) (*url.URL, error) {
 }
 
 func (impl urlRepoImpl) FindByCode(code string) (*url.URL, error) {
-	stmt, err := impl.db.Prepare(`SELECT id, value, created_at, updated_at FROM urls WHERE code = ?`)
+	stmt, err := impl.db.Prepare(`SELECT id, value, created_at, updated_at FROM url WHERE code = ?`)
 	if err != nil {
 		return nil, err
 	}

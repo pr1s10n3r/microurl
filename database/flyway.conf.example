@@ -1,0 +1,5 @@
+flyway.url=jdbc:mariadb://<host>:<port>/<db name>
+flyway.user=<user here>
+flyway.password=<password here>
+flyway.locations=filesystem:migrations
+flyway.cleanDisabled=false

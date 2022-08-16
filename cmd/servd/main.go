@@ -19,6 +19,7 @@ func main() {
 		URL: os.Getenv("DATABASE_URL"),
 	}
 
+	log.Info("Connecting to database...")
 	if err := dbConn.Connect(); err != nil {
 		log.Fatalf("unable to connect with database: %s", err)
 	}

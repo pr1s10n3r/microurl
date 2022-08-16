@@ -24,12 +24,12 @@ func (u urlHandler) StoreURL(ctx *fiber.Ctx) error {
 		URL string `json:"url" validate:"required,url"`
 	}{}
 
-	if verrs := ValidateStruct(reqBody); verrs != nil {
-		return ctx.Status(http.StatusBadRequest).JSON(verrs)
-	}
-
 	if err := ctx.BodyParser(&reqBody); err != nil {
 		return ctx.Status(http.StatusBadRequest).JSON(fiber.Map{"error": err.Error()})
+	}
+
+	if verrs := ValidateStruct(reqBody); verrs != nil {
+		return ctx.Status(http.StatusBadRequest).JSON(verrs)
 	}
 
 	created, err := u.repository.Save(reqBody.URL)
